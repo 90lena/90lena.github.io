@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        
+        function Uhrzeitauswählen(event) {
+            
+    
+            
+            var jetzt=new Date()
+           
+            var nachher=Date.parse("2010-05-08T"+event.target.value+":00")
+            nachher=new Date(nachher)
+
+            var jetzt_minuten=jetzt.getHours()*60+jetzt.getMinutes()
+            var nachher_minuten=nachher.getHours()*60+nachher.getMinutes()
+            
+            var minutendifferenz=nachher_minuten-jetzt_minuten
+            var stunden=Math.ceil(minutendifferenz/60)
+            var minuten=minutendifferenz%60
+
+            var element=document.querySelector(".dauer")
+            element.textContent=stunden+" Stunden"
+        }
+    Uhrzeitauswählen()
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Waschmaschinen-Timer</title>
+    <style>
+        body {
+            background-color: #E6E0F8;
+        }
+
+        img {
+            box-shadow: 10px 10px 10px #A9A9F5, -10px -10px 10px #BCA9F5;
+            display: block;
+            margin: auto;
+            max-width: 90%;
+            
+        }
+
+        div {
+            font-family: "Gill Sans";
+            font-size: large;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p><b>Lenas Waschmaschinen-Timer - nie wieder rechnen!</b></p>
+        <form><label float="left">
+                Um wie viel Uhr soll die Waschmaschine fertig sein?
+                <input type="time" name="fertig" onchange="Uhrzeitauswählen(event)">
+            </label></form>
+        <p>Der Waschmaschinen-Timer muss auf <b class="dauer">00:00:00 Uhr</b> gestellt werden.</p>
+        <p>Nützliches:</p>
+    </div>
+    <img src="https://i.pinimg.com/originals/97/a1/f9/97a1f90866f61e1bfb2d4a9d962f9797.jpg" height="600" width="400">
+</body>
